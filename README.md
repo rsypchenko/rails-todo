@@ -1,24 +1,81 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ToDo list application built on Ruby on Rails with the Hotwire stack.
 
-Things you may want to cover:
+## Tech Stack
 
-* Ruby version
+- Ruby on Rails 7+
+- Hotwire (Stimulus, Turbo)
+- TailwindCSS
+- SQLite (default, can be swapped for PostgreSQL)
 
-* System dependencies
+## Features
 
-* Configuration
+- Add, edit, complete, and delete tasks
+- Inline editing with Stimulus
+- Real-time UI updates with Turbo Streams
+- Responsive and modern UI with TailwindCSS
+- Toast notifications for actions
 
-* Database creation
+## Getting Started
 
-* Database initialization
+### Prerequisites
+- Ruby 3.1+
+- Node.js & Yarn (for JS/CSS bundling)
+- SQLite (default) or PostgreSQL
 
-* How to run the test suite
+### Setup
 
-* Services (job queues, cache servers, search engines, etc.)
+1. **Clone the repository:**
+   ```sh
+   git clone <repo-url>
+   cd rails_todo
+   ```
+2. **Install dependencies:**
+   ```sh
+   bundle install
+   yarn install
+   ```
+3. **Set up the database:**
+   ```sh
+   bin/rails db:setup
+   ```
+4. **Build CSS/JS assets:**
+   ```sh
+   ./bin/dev
+   # or for a one-time build
+   ./bin/build
+   ```
+5. **Start the development server (Puma):**
+   ```sh
+   bin/rails server
+   ```
+6. **Visit the app:**
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-* Deployment instructions
+### Running Tests
 
-* ...
+```sh
+bin/rails test
+```
+
+## Development
+- Hot reloading for JS/CSS via `./bin/dev`
+- Tailwind config: `tailwind.config.js` in project root
+- Main entry points: `app/javascript/application.js`, `app/assets/builds/tailwind.css`
+- Turbo/Stimulus controllers: `app/javascript/controllers/`
+
+## Deployment
+- Ensure environment variables are set for production DB, secret key, etc.
+- Precompile assets:
+  ```sh
+  RAILS_ENV=production bin/rails assets:precompile
+  ```
+- Run migrations:
+  ```sh
+  RAILS_ENV=production bin/rails db:migrate
+  ```
+
+## License
+MIT
+
