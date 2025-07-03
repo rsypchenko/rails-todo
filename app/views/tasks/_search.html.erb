@@ -1,0 +1,3 @@
+<%= form_with url: tasks_path, method: :get, data: { turbo_frame: "tasks" }, class: "mb-4 flex items-center gap-2" do %>
+  <input type="text" name="q" value="<%= params[:q] %>" placeholder="Search by title..." class="border rounded px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-full sm:w-64" autocomplete="off" oninput="this.form.requestSubmit()" />
+<% end %>

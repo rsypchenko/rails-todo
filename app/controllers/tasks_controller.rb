@@ -7,8 +7,10 @@ class TasksController < ApplicationController
     # show only completed tasks if parameter 'completed' is set to true
     if params[:completed] == "1"
       @tasks = @tasks.where(completed: true)
-    elsif params[:completed] == "0"
-        @tasks = @tasks.where(completed: false)
+    end
+    # apply search filter if 'search' parameter is present
+    if params[:q].present?
+      @tasks = @tasks.where("LOWER(title) LIKE ?", "%#{params[:q].downcase}%")
     end
   end
 
