@@ -3,12 +3,7 @@
   <!-- Checkbox for Task Completion -->
  <%= form_with url: toggle_complete_task_path(task), method: :patch, data: { turbo: true }, class: "inline" do %>
   <label class="flex items-center space-x-2 cursor-pointer select-none mt-1">
-    <input type="checkbox"
-           name="completed"
-           value="1"
-           <%= "checked" if task.completed %>
-           onchange="this.form.submit()"
-           class="peer appearance-none h-5 w-5 border border-gray-300 rounded checked:bg-green-500 checked:border-green-500 focus:ring focus:ring-green-300 transition-all duration-200" />
+    <%= check_box_tag "completed", "1", task.completed, class: "peer appearance-none h-5 w-5 border border-gray-300 rounded checked:bg-green-500 checked:border-green-500 focus:ring focus:ring-green-300 transition-all duration-200", onchange: "this.form.requestSubmit()" %>
     <span class="pointer-events-none absolute w-5 h-5 flex items-center justify-center">
       <svg class="hidden peer-checked:block w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
