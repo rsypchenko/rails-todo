@@ -4,6 +4,14 @@ class TasksController < ApplicationController
   # GET /tasks or /tasks.json
   def index
     @tasks = Task.all
+    # show only completed tasks if parameter 'completed' is set to true
+    if params[:completed] == "1"
+      @tasks = @tasks.where(completed: true)
+    end
+    # apply search filter if 'search' parameter is present
+    if params[:q].present?
+      @tasks = @tasks.where("LOWER(title) LIKE ?", "%#{params[:q].downcase}%")
+    end
   end
 
   def toggle_complete

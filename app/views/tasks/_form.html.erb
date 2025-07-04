@@ -1,4 +1,4 @@
-<%= form_with(model: task, url: tasks_path, data: { turbo_frame: "tasks" }, class: "flex gap-2 items-center mb-6") do |f| %>
+<%= form_with(model: task, url: tasks_path, data: { turbo_frame: "tasks", controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }, class: "flex gap-2 items-center mb-6") do |f| %>
   <%= f.text_field :title, placeholder: "Add a new task...", class: "border w-full rounded px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" %>
   <%= f.submit "Add", class: "flex bg-blue-500 text-white px-4 py-2 px-12 rounded hover:bg-blue-600 transition-all duration-300" %>
 <% end %>
